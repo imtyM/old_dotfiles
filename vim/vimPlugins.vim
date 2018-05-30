@@ -15,7 +15,9 @@ Plugin 'VundleVim/Vundle.vim'
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
-
+Plugin 'vim-syntastic/syntastic'
+Plugin 'pangloss/vim-javascript'
+Plugin 'kien/ctrlp.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
