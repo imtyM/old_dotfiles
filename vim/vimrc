@@ -1,4 +1,20 @@
-source ./vimPlugins.vim
+source ~/dotfiles/vim/vimPlugins.vim
+
+"set colors
+source ~/dotfiles/vim/colors/alduin.vim
+
+"theme options
+let t:is_transparent = 0
+function! Toggle_transparent()
+    if t:is_transparent == 0
+        hi Normal guibg=NONE ctermbg=NONE
+        let t:is_transparent = 1
+    else
+        set background=dark
+        let t:is_tranparent = 0
+    endif
+endfunction
+nnoremap <F9> : call Toggle_transparent()<CR>
 
 no <down> <Nop>
 no <left> <Nop>
@@ -10,7 +26,10 @@ ino <left> <Nop>
 ino <right> <Nop>
 ino <up> <Nop>
 
-"Some syntastic options
+"nerdtree mappings
+noremap <F2> :NERDTree<CR>
+
+"syntastic options
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
