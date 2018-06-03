@@ -1,5 +1,6 @@
 source ~/dotfiles/vim/vimPlugins.vim
-
+"set syntax options
+source ~/dotfiles/vim/vimJavascript.vim
 "set colors
 source ~/dotfiles/vim/colors/alduin.vim
 
