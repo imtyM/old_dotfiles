@@ -1,8 +1,12 @@
+#paths and exports
+export EDITOR="/usr/bin/vim"
+
 #aliases
 alias mc='. /usr/share/mc/bin/mc-wrapper.sh'
 alias bo='gedit ~/.bashrc'
 alias o='open'
 alias changeBrightness='xrandr --output eDP-1 --brightness'
+alias devmux='tmux new -s dev'
 
 #custom functions 
 
@@ -10,4 +14,15 @@ function open () {
   xdg-open "$@">/dev/null 2>&1
 }
 
+#disable control flow
+stty -ixon
 
+#256 color (screen terminal)
+alias tmux='tmux -2'
+
+#autojump
+. /usr/share/autojump/autojump.sh
+
+#plugins
+source ~/dotfiles/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/dotfiles/zsh/reminder/reminder.plugin.zsh
