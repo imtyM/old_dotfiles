@@ -33,4 +33,3 @@ Plugins that I use
 Where to find Plugins
 ===
 # vim: set syn=mkd nonu nolist :
-

@@ -1,21 +1,12 @@
-source ~/dotfiles/vim/vimPlugins.vim
-"set syntax options
-source ~/dotfiles/vim/vimJavascript.vim
-"set colors
-source ~/dotfiles/vim/colors/alduin.vim
+let mapleader="\<Space>"
 
-"theme options
-let t:is_transparent = 0
-function! Toggle_transparent()
-    if t:is_transparent == 0
-        hi Normal guibg=NONE ctermbg=NONE
-        let t:is_transparent = 1
-    else
-        set background=dark
-        let t:is_tranparent = 0
-    endif
-endfunction
-nnoremap <F9> : call Toggle_transparent()<CR>
+"source plugins
+source ~/dotfiles/vim/vimPlugins.vim
+source ~/dotfiles/vim/vimMappings.vim
+
+set nocompatible
+filetype plugin on
+syntax on
 
 no <down> <Nop>
 no <left> <Nop>
@@ -27,8 +18,17 @@ ino <left> <Nop>
 ino <right> <Nop>
 ino <up> <Nop>
 
+setlocal spell spelllang=en
+set nospell
+set relativenumber
+set number
+
 "nerdtree mappings
 noremap <F2> :NERDTree<CR>
+
+"shortcuts
+noremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>
 
 "syntastic options
 set statusline+=%#warningmsg#
@@ -40,3 +40,4 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+nnoremap <leader>sc :source %<CR>
