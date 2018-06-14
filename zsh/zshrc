@@ -7,6 +7,7 @@ alias bo='gedit ~/.bashrc'
 alias o='open'
 alias changeBrightness='xrandr --output eDP-1 --brightness'
 alias devmux='tmux new -s dev'
+alias r='ranger'
 
 #custom functions 
 

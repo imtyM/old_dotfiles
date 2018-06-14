@@ -1,0 +1,16 @@
+"free space button
+unmap <Space>
+
+"config files
+map cvm shell vim ~/dotfiles/vim/vimrc
+map czs shell vim ~/dotfiles/zsh/zshrc
+map ctm shell vim ~/dotfiles/tmux/tmuxrc
+map crn shell vim ~/dotfiles/ranger/rrc
+
+"file minipulations
+map dir console mkdir 
+
+"marking files
+map v mark_files toggle=True
+map <Space>v mark_files all=True toggle=True
+
