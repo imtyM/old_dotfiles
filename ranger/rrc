@@ -1,16 +1,49 @@
+set preview_images true
 "free space button
 unmap <Space>
 
 "config files
-map cvm shell vim ~/dotfiles/vim/vimrc
+map cvm chain shell vim ~/dotfiles/vim/vimrc; source ~/.config/ranger/rc.conf
+map cvp shell vim ~/dotfiles/vim/vimPlugins.vim
+map cvs shell vim ~/dotfiles/vim/vimMappings.vim
 map czs shell vim ~/dotfiles/zsh/zshrc
 map ctm shell vim ~/dotfiles/tmux/tmuxrc
 map crn shell vim ~/dotfiles/ranger/rrc
+map cii shell vim ~/.config/ranger/rc.conf
 
 "file minipulations
-map dir console mkdir 
+map dir console mkdir%space
+map <Space>dl shell trash-put %s
+map dt console touch%space
 
 "marking files
 map v mark_files toggle=True
 map <Space>v mark_files all=True toggle=True
 
+"copy movements
+map cpw shell cp %s ~/Pictures/wal/ 
+
+"wal
+map <Space>bg shell wal -i %s
+
+"filter typing
+map f console scout -ftsea%space
+
+
+"goto mappings
+map gt cd ~/.themes
+map gi cd ~/imtiaz
+map gw cd ~/work
+
+"dev mappings
+map <Space>rn shell node %s
+
+"move file mappings
+map dmpr shell mv %s ~/Project/
+map dmpi shell mv %s ~/Project/Images/
+
+"device synicing
+map <Space>syncmusic shell adb-sync --reverse /sdcard/Music/ ~/Music
+
+"compression stuff
+map uzip shell unzip %s

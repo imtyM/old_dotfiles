@@ -1,6 +1,10 @@
 set -g prefix C-a
 unbind C-b
 bind C-a send-prefix
+setw -g mouse on
 
-source ~/dotfiles/tmux/powerlineGreyTheme
+set-option -g allow-rename off
+# source ~/dotfiles/tmux/powerlineGreyTheme
 
+set -g default-terminal "screen-256color"
+setw -g automatic-rename off

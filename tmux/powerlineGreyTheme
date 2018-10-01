@@ -8,6 +8,7 @@
 # https://github.com/Lokaltog/powerline-fonts
 #
 
+. "${HOME}/.cache/wal/colors.sh"
 # Status update interval
 set -g status-interval 1
 

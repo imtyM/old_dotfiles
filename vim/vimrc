@@ -1,8 +1,13 @@
+
 let mapleader="\<Space>"
 
 "source plugins
 source ~/dotfiles/vim/vimPlugins.vim
 source ~/dotfiles/vim/vimMappings.vim
+
+let g:gruvbox_italic=1
+colorscheme wal
+set bg=dark
 
 set nocompatible
 filetype plugin on
@@ -18,13 +23,25 @@ ino <left> <Nop>
 ino <right> <Nop>
 ino <up> <Nop>
 
+"window 
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+set fillchars+=vert:\ 
+
 setlocal spell spelllang=en
 set nospell
 set relativenumber
 set number
 
-"nerdtree mappings
+"nerdtree options
 noremap <F2> :NERDTree<CR>
+hi Directory guifg=#FF0000 ctermfg=red
+hi NERDTreeFile guifg=#FFAA00 ctermfg=white
+hi NERDTreeDirSlash guifg=#FFAA00 ctermfg=red
+hi NERDTreeCWD guifg=#FFFF00 ctermfg=red
 
 "shortcuts
 noremap <C-s> :w<CR>
@@ -35,9 +52,26 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let g:syntastic_loc_list_height = 5
+let g:syntastic_javascript_checkers = ['eslint','standard']
+let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-nnoremap <leader>sc :source %<CR>
+hi javaScriptBraces ctermbg=NONE ctermfg=1
+hi MatchParen ctermbg=8 ctermfg=2
+hi StatusLineNC ctermbg=1 ctermfg=2
+hi VertSplit ctermbg=1 ctermfg=1
+highlight Pmenu ctermfg=15 ctermbg=black
+nnoremap <esc> :noh<return><esc>
+
+
+noremap <leader>c :!standard --fix %<CR>
+
+"disable scratch
+set completeopt-=preview
+
+"latex previews
+let g:livepreview_engine = 'pdflatex'
