@@ -60,10 +60,12 @@ export ANDROID_PLATFORM_TOOLS="$HOME/tools/platform-tools"
 export GO_BIN="$HOME/go/bin"
 export ROBO3T_BIN="$HOME/apps/robo3t-1.2.1-linux-x86_64-3e50a65/bin"
 export PYCHARM_BIN="$HOME/apps/pycharm-community-2018.2.1/bin"
+export RBENV_BIN="$HOME/.rbenv/bin"
+export RB_BUILD_BIN="$HOME/.rbenv/plugins/ruby-build/bin"
 
 
 
-export PATH="${PATH}:${LOCAL_HOME_BIN}:${ANDROID_PLATFORM_TOOLS}:${ADB_SYNC_BIN}:${GO_BIN}:${ROBO3T_BIN}:${PYCHARM_BIN}"
+export PATH="${PATH}:${LOCAL_HOME_BIN}:${ANDROID_PLATFORM_TOOLS}:${ADB_SYNC_BIN}:${GO_BIN}:${ROBO3T_BIN}:${PYCHARM_BIN}:${RBENV_BIN}:${RB_BUILD_BIN}"
 
 
 # Trello API

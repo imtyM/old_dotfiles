@@ -13,7 +13,7 @@ map cii shell vim ~/.config/ranger/rc.conf
 
 "file minipulations
 map dir console mkdir%space
-map <Space>dl shell trash-put %s
+map dl shell trash-put %s
 map dt console touch%space
 
 "marking files
@@ -34,6 +34,7 @@ map f console scout -ftsea%space
 map gt cd ~/.themes
 map gi cd ~/imtiaz
 map gw cd ~/work
+map gb cd ~/wealthbit
 
 "dev mappings
 map <Space>rn shell node %s
