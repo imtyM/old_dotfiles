@@ -26,6 +26,8 @@ Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'morhetz/gruvbox'
 Plugin 'jiangmiao/auto-pairs'
 
+Plugin 'w0rp/ale'
+
 " Ruby specific plugins
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'slim-template/vim-slim.git'

@@ -1,4 +1,3 @@
-
 let mapleader="\<Space>"
 
 "source plugins
@@ -24,10 +23,14 @@ ino <right> <Nop>
 ino <up> <Nop>
 
 "window 
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+
+"tabs
+nmap <C-o> :tabn
+nmap <C-i> :tabp
 
 set fillchars+=vert:\ 
 
@@ -44,8 +47,10 @@ hi NERDTreeDirSlash guifg=#FFAA00 ctermfg=red
 hi NERDTreeCWD guifg=#FFFF00 ctermfg=red
 
 "shortcuts
-noremap <C-s> :w<CR>
-inoremap <C-s> <Esc>:w<CR>
+noremap <C-s> :wa<CR>
+inoremap <C-s> <Esc>:wa<CR>
+noremap <C-x> :wq<CR>
+inoremap <C-x> <Esc>:wq<CR>
 
 "syntastic options
 set statusline+=%#warningmsg#
@@ -60,6 +65,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+let g:AutoPairsShortcutJump = '<C-Space>'
+  
 hi javaScriptBraces ctermbg=NONE ctermfg=1
 hi MatchParen ctermbg=8 ctermfg=2
 hi StatusLineNC ctermbg=1 ctermfg=2
@@ -75,3 +82,6 @@ set completeopt-=preview
 
 "latex previews
 let g:livepreview_engine = 'pdflatex'
+
+" ruby 
+autocmd BufNewFile,BufRead *.slim setlocal filetype=slim

@@ -24,6 +24,9 @@ alias getclip="xclip -selection c -o"
 alias claer='clear'
 alias l='ls'
 
+# zsh bindings
+bindkey '^ ' autosuggest-accept
+
 #custom functions 
 
 function open () {
@@ -76,3 +79,4 @@ export TRELLO_SECRET=7049e4f5a5e45a0196e2e8194d0c42c8a66e8042c9bcf82788f923ff725
 
 #tmux session 
 mux main
+eval "$(rbenv init -)"

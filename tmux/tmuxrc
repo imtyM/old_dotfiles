@@ -1,3 +1,4 @@
+source ~/dotfiles/tmux/design
 set -g prefix C-a
 unbind C-b
 bind C-a send-prefix
@@ -8,3 +9,35 @@ set-option -g allow-rename off
 
 set -g default-terminal "screen-256color"
 setw -g automatic-rename off
+
+# REMAPPINGS
+bind i split-window -h
+bind u split-window -v
+
+# switch panes 
+bind l select-pane -L
+bind h select-pane -R
+bind k select-pane -U
+bind j select-pane -D
+unbind -n l
+unbind -n k
+unbind -n j
+unbind -n h
+unbind -n M-l
+unbind -n M-h
+unbind -n M-k
+unbind -n M-j
+unbind -n C-l
+unbind -n C-h
+unbind -n C-k
+unbind -n C-j
+
+# resize panes
+bind -r M-l resize-pane -R 5
+bind -r M-h resize-pane -L 5
+bind -r M-k resize-pane -U 5
+bind -r M-j resize-pane -D 5
+
+
+# source file
+bind r source-file ~/.tmux.conf
