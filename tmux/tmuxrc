@@ -5,9 +5,8 @@ bind C-a send-prefix
 setw -g mouse on
 
 set-option -g allow-rename off
-# source ~/dotfiles/tmux/powerlineGreyTheme
-
 set -g default-terminal "screen-256color"
+
 setw -g automatic-rename off
 
 # REMAPPINGS
@@ -27,10 +26,10 @@ unbind -n M-l
 unbind -n M-h
 unbind -n M-k
 unbind -n M-j
-unbind -n C-l
-unbind -n C-h
-unbind -n C-k
-unbind -n C-j
+bind -n C-l select-pane -L
+bind -n C-h select-pane -R
+bind -n C-k select-pane -U
+bind -n C-j select-pane -D
 
 # resize panes
 bind -r M-l resize-pane -R 5
@@ -41,3 +40,34 @@ bind -r M-j resize-pane -D 5
 
 # source file
 bind r source-file ~/.tmux.conf
+
+# vim pane switching 
+if-shell '`echo $TMUX | grep -q tmate`' \
+  "bind -n C-h run \"(tmate display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmate send-keys C-h) || tmate select-pane -L\"" \
+  "bind -n C-h run \"(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmux send-keys C-h) || tmux select-pane -L\""
+if-shell '`echo $TMUX | grep -q tmate`' \
+  "bind -n C-j run \"(tmate display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmate send-keys C-j) || tmate select-pane -D\"" \
+  "bind -n C-j run \"(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmux send-keys C-j) || tmux select-pane -D\""
+if-shell '`echo $TMUX | grep -q tmate`' \
+  "bind -n C-k run \"(tmate display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmate send-keys C-k) || tmate select-pane -U\"" \
+  "bind -n C-k run \"(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmux send-keys C-k) || tmux select-pane -U\""
+if-shell '`echo $TMUX | grep -q tmate`' \
+  "bind -n C-l run \"(tmate display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmate send-keys C-l) || tmate select-pane -R\"" \
+  "bind -n C-l run \"(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmux send-keys C-l) || tmux select-pane -R\""
+if-shell '`echo $TMUX | grep -q tmate`' \
+  "bind -n C-\\ run \"(tmate display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmate send-keys 'C-\\\\') || tmate select-pane -l\"" \
+  "bind -n C-\\ run \"(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmux send-keys 'C-\\\\') || tmux select-pane -l\""
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+
+# Other examples:
+# set -g @plugin 'github_username/plugin_name'
+# set -g @plugin 'git@github.com/user/plugin'
+# set -g @plugin 'git@bitbucket.com/user/plugin'
+set -g @plugin 'arcticicestudio/nord-tmux'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run -b '~/.tmux/plugins/tpm/tpm'
+
+

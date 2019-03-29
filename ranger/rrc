@@ -1,6 +1,7 @@
 set preview_images true
 "free space button
 unmap <Space>
+map srn console source ~/.config/ranger/rc.conf
 
 "config files
 map cvm chain shell vim ~/dotfiles/vim/vimrc; source ~/.config/ranger/rc.conf
@@ -9,12 +10,14 @@ map cvs shell vim ~/dotfiles/vim/vimMappings.vim
 map czs shell vim ~/dotfiles/zsh/zshrc
 map ctm shell vim ~/dotfiles/tmux/tmuxrc
 map crn shell vim ~/dotfiles/ranger/rrc
+map crm shell vim ~/dotfiles/ranger/goto_mappings
 map cii shell vim ~/.config/ranger/rc.conf
 
 "file minipulations
 map dir console mkdir%space
-map dl shell trash-put %s
+map dlyy shell rm -rf %s
 map dt console touch%space
+map drmyy shell rm -rf %s
 
 "marking files
 map v mark_files toggle=True
@@ -28,16 +31,12 @@ map <Space>bg shell wal -i %s
 
 "filter typing
 map f console scout -ftsea%space
+map <C-f> fzf_select
+map <C-g> fzf_locate
 
 
 "goto mappings
-map gt cd ~/.themes
-map gi cd ~/imtiaz
-map gw cd ~/work
-map gb cd ~/wealthbit
-
-"dev mappings
-map <Space>rn shell node %s
+source ~/dotfiles/ranger/goto_mappings
 
 "move file mappings
 map dmpr shell mv %s ~/Project/

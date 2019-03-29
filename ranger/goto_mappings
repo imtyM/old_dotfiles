@@ -1,0 +1,13 @@
+" Goto mappings
+" work - wealthbit
+map gwr cd ~/wealthbit
+map gwp cd ~/wealthbit/retirement-planner
+
+" Pictures
+map gpw cd ~/Pictures/wallpapers
+map gpp cd ~/Pictures/personal
+
+" Root
+map gd cd ~/Downloads
+
+

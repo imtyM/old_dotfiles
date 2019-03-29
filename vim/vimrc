@@ -1,12 +1,28 @@
 let mapleader="\<Space>"
+let maplocalleader="\<Space>"
 
 "source plugins
 source ~/dotfiles/vim/vimPlugins.vim
 source ~/dotfiles/vim/vimMappings.vim
 
 let g:gruvbox_italic=1
-colorscheme wal
-set bg=dark
+colorscheme nord
+let g:nord_italic = 1
+let g:nord_underline = 1
+let g:nord_italic_comments = 1
+let g:nord_uniform_status_lines = 1
+let g:nord_cursor_line_number_background = 1
+set cursorline
+
+set nocompatible      " We're running Vim, not Vi!
+syntax on             " Enable syntax highlighting
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
+
+if has('nvim') || has('termguicolors')
+  set termguicolors
+endif
 
 set nocompatible
 filetype plugin on
@@ -17,22 +33,22 @@ no <left> <Nop>
 no <right> <Nop>
 no <up> <Nop>
 
-ino <down> <Nop> 
+ino <down> <Nop>
 ino <left> <Nop>
 ino <right> <Nop>
 ino <up> <Nop>
 
-"window 
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
+"window
+nmap <C-h> :winc h<CR>
+nmap <C-j> :winc j<CR>
+nmap <C-k> :winc k<CR>
+nmap <C-l> :winc l<CR>
 
 "tabs
-nmap <C-o> :tabn
-nmap <C-i> :tabp
+nmap <C-o> :tabn<CR>
+nmap <C-i> :tabp<CR>
 
-set fillchars+=vert:\ 
+" set fillchars+=vert:\
 
 setlocal spell spelllang=en
 set nospell
@@ -40,48 +56,63 @@ set relativenumber
 set number
 
 "nerdtree options
-noremap <F2> :NERDTree<CR>
-hi Directory guifg=#FF0000 ctermfg=red
-hi NERDTreeFile guifg=#FFAA00 ctermfg=white
-hi NERDTreeDirSlash guifg=#FFAA00 ctermfg=red
-hi NERDTreeCWD guifg=#FFFF00 ctermfg=red
+nnoremap <F2> :NERDTree<CR>
+"hi Directory guifg=#FF0000 ctermfg=red
+"hi NERDTreeFile guifg=#FFAA00 ctermfg=white
+"hi NERDTreeDirSlash guifg=#FFAA00 ctermfg=red
 
 "shortcuts
-noremap <C-s> :wa<CR>
-inoremap <C-s> <Esc>:wa<CR>
-noremap <C-x> :wq<CR>
-inoremap <C-x> <Esc>:wq<CR>
+noremap <C-w> :TrailerTrim<CR>:wa<CR>
+inoremap <C-w> <Esc>:TrailerTrim<CR>:wa<CR>
+noremap <C-x> :TrailerTrim<CR>:wq<CR>
+"inoremap <C-x> <Esc>:wq<CR>
+inoremap <C-j> <Esc>
+vnoremap <C-j> <Esc>
 
-"syntastic options
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+inoremap ∆ <ESC>
 
-let g:syntastic_loc_list_height = 5
-let g:syntastic_javascript_checkers = ['eslint','standard']
-let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:AutoPairsShortcutJump = '<C-@>'
 
-let g:AutoPairsShortcutJump = '<C-Space>'
-  
-hi javaScriptBraces ctermbg=NONE ctermfg=1
-hi MatchParen ctermbg=8 ctermfg=2
-hi StatusLineNC ctermbg=1 ctermfg=2
-hi VertSplit ctermbg=1 ctermfg=1
-highlight Pmenu ctermfg=15 ctermbg=black
-nnoremap <esc> :noh<return><esc>
-
-
-noremap <leader>c :!standard --fix %<CR>
+" hi javaScriptBraces ctermbg=NONE ctermfg=1
+" hi MatchParen ctermbg=8 ctermfg=2
+" hi StatusLineNC ctermbg=1 ctermfg=2
+" hi VertSplit ctermbg=1 ctermfg=1
+" highlight Pmenu ctermfg=15 ctermbg=black
 
 "disable scratch
 set completeopt-=preview
+let g:indentLine_enabled = 1
+let g:indentLine_setColors = 0
 
-"latex previews
-let g:livepreview_engine = 'pdflatex'
+filetype plugin indent on
+" On pressing tab, insert 2 spaces
+set expandtab
+" show existing tab with 2 spaces width
+set tabstop=2
+set softtabstop=2
+" when indenting with '>', use 2 spaces width
+set shiftwidth=2
 
-" ruby 
-autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
+"auto complete options
+set completeopt+=menuone
+set completeopt+=noselect
+set shortmess+=c
+let g:mucomplete#enable_auto_at_startup = 1
+
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.jsx"
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+let g:closetag_filetypes = 'html,xhtml,phtml'
+let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+let g:closetag_emptyTags_caseSensitive = 1
+let g:closetag_regions = {'typescript.tsx': 'jsxRegion,tsxRegion','javascript.jsx': 'jsxRegion'}
+let g:closetag_shortcut = '>'
+
+"ctrlp
+let g:ctrlp_max_files=0
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
+
+" Vim folding
+set foldmethod=syntax "syntax highlighting items specify folds
+let javaScript_fold=1 "activate folding by JS syntax
+set foldlevelstart=99 "start file with all folds opened
+nnoremap <leader>fr zR

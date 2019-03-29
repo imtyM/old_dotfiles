@@ -1,0 +1,11 @@
+alias cw='wal -i ~/Pictures/wallpapers/'
+alias q='exit'
+alias sz='. ~/.zshrc'
+alias cl='clear'
+alias mux='tmuxinator'
+alias r='ranger'
+
+# plugins
+bindkey '^ ' autosuggest-accept
+
+source ~/dotfiles/zsh/zshrc

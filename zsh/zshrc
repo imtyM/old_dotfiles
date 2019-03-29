@@ -1,10 +1,11 @@
+echo "Loading shell.."
 #paths and exports
 export EDITOR="/usr/bin/vim"
+export ZSH_CUSTOM="~/dotfiles/zsh"
+ZSH_CUSTOM="~/dotfiles/zsh"
 
 #aliases
 alias o='open'
-alias r='export TERM=screen-256color && ranger && export TERM=xterm-256color'
-alias ranger='export TERM=screen-256color && ranger && export TERM=xterm-256color'
 alias cw='wal -i ~/Pictures/wal/'
 alias sai='sudo apt-get install'
 alias q='exit'
@@ -12,9 +13,7 @@ alias rm='rm -i'
 alias music='ncmpcpp'
 alias mux='tmuxinator'
 alias sourcezsh='. ~/.zshrc'
-
-alias rs='tmux detach -a'
-alias rc='tmux attach'
+alias sz='. ~/.zshrc'
 
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
@@ -27,7 +26,23 @@ alias l='ls'
 # zsh bindings
 bindkey '^ ' autosuggest-accept
 
-#custom functions 
+# git stuff
+
+alias gs='git status'
+alias gc='git checkout'
+alias gcd='git checkout develop'
+alias gpl='git pull origin HEAD'
+alias gcm='git commit -m'
+alias gcnb='git checkout -b'
+alias gaa='git add .'
+alias gpo='git push origin HEAD'
+
+# dev
+alias rs='rails s -p 5000'
+alias ws='bin/webpack-dev-server'
+alias ys='yarn storybook'
+
+#custom functions
 
 function open () {
   xdg-open "$@">/dev/null 2>&1
@@ -42,41 +57,17 @@ function sai() {
 #disable control flow
 stty -ixon
 
-#256 color (screen terminal)
-alias tmux='tmux -2'
-
 #pywal
-(cat ~/.cache/wal/sequences &)
-cat ~/.cache/wal/sequences
+# (cat ~/.cache/wal/sequences &)
+# source ~/.cache/wal/colors-tty.sh
 
 #plugins
 source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
-source ~/dotfiles/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/dotfiles/zsh/reminder/reminder.plugin.zsh
-source ~/.cache/wal/colors-tty.sh
-
 
 # paths
-export ADB_SYNC_BIN="$HOME/tools/adb-sync"
-export LOCAL_HOME_BIN="$HOME/.local/bin"
-export ANDROID_PLATFORM_TOOLS="$HOME/tools/platform-tools"
-export GO_BIN="$HOME/go/bin"
-export ROBO3T_BIN="$HOME/apps/robo3t-1.2.1-linux-x86_64-3e50a65/bin"
-export PYCHARM_BIN="$HOME/apps/pycharm-community-2018.2.1/bin"
-export RBENV_BIN="$HOME/.rbenv/bin"
-export RB_BUILD_BIN="$HOME/.rbenv/plugins/ruby-build/bin"
+export LOVE_PATH="/Applications/love.app/Contents/MacOS/"
+export PATH="${PATH}:${LOVE_PATH}"
 
-
-
-export PATH="${PATH}:${LOCAL_HOME_BIN}:${ANDROID_PLATFORM_TOOLS}:${ADB_SYNC_BIN}:${GO_BIN}:${ROBO3T_BIN}:${PYCHARM_BIN}:${RBENV_BIN}:${RB_BUILD_BIN}"
-
-
-# Trello API
-export TRELLO_USER=imtiazmukadam 
-export TRELLO_KEY=c041c1b9cf4670a7bc522c17b078ff2f
-export TRELLO_TOKEN=42cbdff5f8d176461be8423472d20b2cdd00d71ecb4965add469cec01f0725ca
-export TRELLO_SECRET=7049e4f5a5e45a0196e2e8194d0c42c8a66e8042c9bcf82788f923ff7250328e
-
-#tmux session 
-mux main
-eval "$(rbenv init -)"
+plugins=(
+  zsh-autosuggestions
+)
